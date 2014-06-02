@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
  * See the NOTICE file distributed with this work for additional
  * information regarding copyright ownership.
@@ -20,29 +19,31 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc>
+<xwikidoc version="1.1">
   <web>TaskManager</web>
   <name>TaskManagerPanel</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
-  <parent>TaskManager.WebHome</parent>
   <creator>xwiki:XWiki.Admin</creator>
+  <creationDate>1401281172000</creationDate>
+  <parent>TaskManager.WebHome</parent>
   <author>xwiki:XWiki.Admin</author>
-  <customClass/>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <creationDate>1382358826000</creationDate>
-  <date>1383316307000</date>
+  <date>1401710908000</date>
   <contentUpdateDate>1382358826000</contentUpdateDate>
   <version>1.1</version>
   <title>TaskManagerPanel</title>
-  <defaultTemplate/>
-  <validationScript/>
   <comment/>
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
+  <content/>
   <object>
+    <name>TaskManager.TaskManagerPanel</name>
+    <number>0</number>
+    <className>Panels.PanelClass</className>
+    <guid>5806244c-f908-4435-98b4-7f646f468f8d</guid>
     <class>
       <name>Panels.PanelClass</name>
       <customClass/>
@@ -116,28 +117,35 @@
         <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
       </type>
     </class>
-    <name>TaskManager.TaskManagerPanel</name>
-    <number>0</number>
-    <className>Panels.PanelClass</className>
-    <guid>5806244c-f908-4435-98b4-7f646f468f8d</guid>
     <property>
       <category>Information</category>
     </property>
     <property>
       <content>{{velocity}}
+{{html wiki="true"}}
 #panelheader($services.localization.render('taskmanager.panel.paneltitle'))
 #set($query = "from doc.object(TaskManager.TaskManagerClass) as document where doc.fullName &lt;&gt; 'TaskManager.TaskManagerTemplate' and document.assignee=:currentUser order by document.duedate asc")
-#set($results = $services.query.xwql("$query").bindValue("currentUser", "$xcontext.getUserReference()").setLimit(5).execute())
+#set($results = $services.query.xwql("$query").bindValue("currentUser", $services.model.serialize($xcontext.userReference,'compactwiki')).setLimit(5).execute())
+&lt;ul class="list-unstyled"&gt;
 #foreach($result in $results)
-  #set($object = $xwiki.getDocument($result).getObject('TaskManager.TaskManagerClass'))   
-  * [[$object.getProperty('name').value&gt;&gt;$result]] $services.localization.render('taskmanager.panel.untildate') $datetool.format('HH:mm dd/MMM/yyyy',$object.getProperty('duedate').value)
+  #set($object = $xwiki.getDocument($result).getObject('TaskManager.TaskManagerClass'))
+    &lt;li class="media"&gt;
+      &lt;span class="glyphicon glyphicon-check text-muted pull-left"&gt;&lt;/span&gt;
+      &lt;div class="media-body"&gt;
+          &lt;strong&gt;[[$object.getProperty('name').value&gt;&gt;$result]]&lt;/strong&gt;
+          &lt;br&gt;
+          (%class="text-muted"%)$services.localization.render('taskmanager.panel.untildate') $datetool.format('HH:mm dd/MMM/yyyy',$object.getProperty('duedate').value)(%%)
+      &lt;/div&gt;
+    &lt;/li&gt;
 #end
+&lt;/ul&gt;
 #if($results.size() == 0)
-  * $services.localization.render('taskmanager.panel.noactivetasks')  
+  (%class="pull-left"%)$services.localization.render('taskmanager.panel.noactivetasks')  
 #else
-  * [[$services.localization.render('taskmanager.panel.fulltasklist')&gt;&gt;TaskManager.WebHome]]
+  (%class="pull-right"%)[[$services.localization.render('taskmanager.panel.fulltasklist')&gt;&gt;TaskManager.WebHome]]
 #end
 #panelfooter()
+{{/html}}
 {{/velocity}}</content>
     </property>
     <property>
@@ -150,5 +158,4 @@
       <type>view</type>
     </property>
   </object>
-  <content/>
 </xwikidoc>

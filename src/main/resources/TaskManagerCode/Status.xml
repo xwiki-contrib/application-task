@@ -20,56 +20,33 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.1">
-  <web>TaskManager</web>
-  <name>High</name>
+<xwikidoc>
+  <web>TaskManagerCode</web>
+  <name>Status</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
-  <creator>xwiki:XWiki.Admin</creator>
   <parent>TaskManager.WebHome</parent>
+  <creator>xwiki:XWiki.Admin</creator>
   <author>xwiki:XWiki.Admin</author>
+  <customClass/>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <creationDate>1382358827000</creationDate>
-  <date>1382358827000</date>
-  <contentUpdateDate>1382358827000</contentUpdateDate>
+  <creationDate>1435060470000</creationDate>
+  <date>1435060470000</date>
+  <contentUpdateDate>1435060470000</contentUpdateDate>
   <version>1.1</version>
   <title/>
+  <defaultTemplate/>
+  <validationScript/>
   <comment/>
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content/>
   <object>
-    <name>TaskManager.High</name>
+    <name>TaskManagerCode.Status</name>
     <number>0</number>
-    <className>TaskManager.SeverityClass</className>
-    <guid>98c6ba5d-a8bf-44b3-8215-3b9be6fcd5a1</guid>
-    <class>
-      <name>TaskManager.SeverityClass</name>
-      <customClass/>
-      <customMapping/>
-      <defaultViewSheet/>
-      <defaultEditSheet/>
-      <defaultWeb/>
-      <nameField/>
-      <validationScript/>
-      <severity>
-        <customDisplay/>
-        <disabled>0</disabled>
-        <name>severity</name>
-        <number>1</number>
-        <picker>0</picker>
-        <prettyName>severity</prettyName>
-        <size>30</size>
-        <unmodifiable>0</unmodifiable>
-        <validationMessage/>
-        <validationRegExp/>
-        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
-      </severity>
-    </class>
-    <property>
-      <severity>High</severity>
-    </property>
+    <className>XWiki.StatusClass</className>
+    <guid>6580e8d5-45c5-457a-a30f-83858d1dfe31</guid>
   </object>
+  <content/>
 </xwikidoc>

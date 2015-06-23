@@ -21,30 +21,28 @@
 -->
 
 <xwikidoc>
-  <web>TaskManager</web>
+  <web>TaskManagerCode</web>
   <name>TaskManagerPanel</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
-  <creator>xwiki:XWiki.Admin</creator>
-  <creationDate>1401281172000</creationDate>
   <parent>TaskManager.WebHome</parent>
+  <creator>xwiki:XWiki.Admin</creator>
   <author>xwiki:XWiki.Admin</author>
+  <customClass/>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1401283749000</date>
-  <contentUpdateDate>1382358826000</contentUpdateDate>
+  <creationDate>1435060518000</creationDate>
+  <date>1435060518000</date>
+  <contentUpdateDate>1435060518000</contentUpdateDate>
   <version>1.1</version>
   <title>TaskManagerPanel</title>
+  <defaultTemplate/>
+  <validationScript/>
   <comment/>
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content/>
   <object>
-    <name>TaskManager.TaskManagerPanel</name>
-    <number>0</number>
-    <className>Panels.PanelClass</className>
-    <guid>5806244c-f908-4435-98b4-7f646f468f8d</guid>
     <class>
       <name>Panels.PanelClass</name>
       <customClass/>
@@ -118,6 +116,10 @@
         <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
       </type>
     </class>
+    <name>TaskManagerCode.TaskManagerPanel</name>
+    <number>0</number>
+    <className>Panels.PanelClass</className>
+    <guid>590de929-e0c7-4b20-9b1b-18f3e1368a7a</guid>
     <property>
       <category>Information</category>
     </property>
@@ -149,4 +151,5 @@
       <type>view</type>
     </property>
   </object>
+  <content/>
 </xwikidoc>

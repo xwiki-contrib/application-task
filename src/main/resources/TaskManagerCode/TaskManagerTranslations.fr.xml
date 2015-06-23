@@ -21,7 +21,7 @@
 -->
 
 <xwikidoc>
-  <web>TaskManager</web>
+  <web>TaskManagerCode</web>
   <name>TaskManagerTranslations</name>
   <language>fr</language>
   <defaultLanguage>en</defaultLanguage>
@@ -31,9 +31,9 @@
   <author>xwiki:XWiki.Admin</author>
   <customClass/>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <creationDate>1401875053000</creationDate>
-  <date>1402411405000</date>
-  <contentUpdateDate>1402411405000</contentUpdateDate>
+  <creationDate>1435060547000</creationDate>
+  <date>1435060547000</date>
+  <contentUpdateDate>1435060547000</contentUpdateDate>
   <version>1.1</version>
   <title/>
   <defaultTemplate/>

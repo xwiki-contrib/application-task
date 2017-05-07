@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc>
+  <web>TaskManagerCode</web>
+  <name>TaskManagerPanel</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <parent>TaskManager.WebHome</parent>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1435060518000</creationDate>
+  <date>1435060518000</date>
+  <contentUpdateDate>1435060518000</contentUpdateDate>
+  <version>1.1</version>
+  <title>TaskManagerPanel</title>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <object>
+    <class>
+      <name>Panels.PanelClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <category>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>category</name>
+        <number>5</number>
+        <prettyName>Category</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators> ,|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>Information|Navigation|Tools|Administration|Other</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </category>
+      <content>
+        <disabled>0</disabled>
+        <editor>Text</editor>
+        <name>content</name>
+        <number>4</number>
+        <prettyName>Content</prettyName>
+        <rows>25</rows>
+        <size>120</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </content>
+      <description>
+        <disabled>0</disabled>
+        <editor>Text</editor>
+        <name>description</name>
+        <number>3</number>
+        <prettyName>Description</prettyName>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <type>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>type</name>
+        <number>2</number>
+        <prettyName>Panel type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators> ,|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>view|edit</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </type>
+    </class>
+    <name>TaskManagerCode.TaskManagerPanel</name>
+    <number>0</number>
+    <className>Panels.PanelClass</className>
+    <guid>590de929-e0c7-4b20-9b1b-18f3e1368a7a</guid>
+    <property>
+      <category>Information</category>
+    </property>
+    <property>
+      <content>{{velocity}}
+  #panelheader($services.localization.render('taskmanager.panel.paneltitle'))
+  #set($query = "from doc.object(TaskManager.TaskManagerClass) as document where doc.fullName &lt;&gt; 'TaskManager.TaskManagerTemplate' and document.assignee=:currentUser order by document.duedate asc")
+  #set($results = $services.query.xwql("$query").bindValue("currentUser", $services.model.serialize($xcontext.userReference,'compactwiki')).setLimit(5).execute())
+  #foreach($result in $results)
+    #set($object = $xwiki.getDocument($result).getObject('TaskManager.TaskManagerClass'))
+    * $services.icon.render('accept') **[[$object.getProperty('name').value&gt;&gt;$result]]**
+    (% class="text-muted small" %)$services.localization.render('taskmanager.panel.untildate') $datetool.format('HH:mm dd/MMM/yyyy',$object.getProperty('duedate').value)
+  #end
+  #if($results.size() == 0)
+    (% class="pull-left"%)$services.localization.render('taskmanager.panel.noactivetasks')
+  #else
+    (% class="pull-right"%)[[$services.localization.render('taskmanager.panel.fulltasklist')&gt;&gt;TaskManager.WebHome]]
+  #end
+  #panelfooter()
+{{/velocity}}</content>
+    </property>
+    <property>
+      <description>My Due Tasks</description>
+    </property>
+    <property>
+      <name>My Due Tasks</name>
+    </property>
+    <property>
+      <type>view</type>
+    </property>
+  </object>
+  <content/>
+</xwikidoc>

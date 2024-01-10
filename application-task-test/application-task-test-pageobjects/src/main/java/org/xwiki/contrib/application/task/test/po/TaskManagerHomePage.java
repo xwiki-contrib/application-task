@@ -71,7 +71,7 @@ public class TaskManagerHomePage extends ViewPage
     public void setEntryName(String taskName)
     {
         WebElement nameInput =
-            getUtil().findElementWithoutWaiting(getDriver(),
+            getUtil().getDriver().findElementWithoutWaiting(
                 By.xpath("//div[@id = 'entryNamePopup']//input[@type = 'text']"));
         nameInput.clear();
         nameInput.sendKeys(taskName);
@@ -85,7 +85,7 @@ public class TaskManagerHomePage extends ViewPage
     public TaskManagerInlinePage clickAddEntry()
     {
         WebElement addButton =
-            getUtil().findElementWithoutWaiting(getDriver(),
+            getUtil().getDriver().findElementWithoutWaiting(
                 By.xpath("//div[@id = 'entryNamePopup']//input[@type = 'image']"));
         addButton.click();
         return new TaskManagerInlinePage();
